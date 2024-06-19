@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Upd8Clientes_Core.Models.Cidade>
+
+@{
+    ViewData["Title"] = "Cidades";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-primary" title="Cadastrar uma nova cidade" asp-action="Create">Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a class="btn btn-success" title="Editar a cidade" asp-action="Edit" asp-route-id="@item.CidadeId">Editar</a>
+                    <a class="btn btn-danger" title="Excluir a cidade" asp-action="Delete" asp-route-id="@item.CidadeId">Excluir</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado.Nome)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
