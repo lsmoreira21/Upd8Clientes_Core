@@ -1,9 +1,18 @@
-var builder = WebApplication.CreateBuilder(args);
+using Upd8Clientes_Core;
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+
+var builder = WebApplication.CreateBuilder(args);
+builder.AddConfiguration();
+builder.AddDataContexts();
+builder.AddServices();
+
+
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -22,6 +31,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Clientes}/{action=Index}/{id?}");
 
 app.Run();
